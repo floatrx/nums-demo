@@ -1,5 +1,7 @@
 # Nums game (React + Vite)
 
+### Demo https://nums-demo.vercel.app/
+
 ![Screenshot](./nums.jpeg)
 
 
