@@ -1,0 +1,35 @@
+@keyframes popOut {
+    0% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+.cell {
+    @apply flex size-6 cursor-pointer items-center justify-center rounded-md transition-all sm:size-10;
+
+    @apply text-lg font-black text-black;
+
+    @apply bg-gradient-to-b from-orange-300 to-orange-500 shadow shadow-blue-50/10;
+
+    &:hover {
+        @apply scale-110;
+    }
+
+    &:active {
+        @apply scale-95;
+    }
+
+    &.selected {
+        @apply bg-gradient-to-b from-green-300 to-green-500 shadow-xl shadow-green-500;
+    }
+    &.passed {
+        @apply pointer-events-none;
+        animation: popOut 0.5s ease-in-out both;
+    }
+}
