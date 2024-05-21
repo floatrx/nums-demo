@@ -1,23 +1,29 @@
-:root {
-    --background-color: #201f2f;
-    --text-color: #f4f4ff;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+@layer base {
+    :root {
+        --background-color: #201f2f;
+        --text-color: #f4f4ff;
 
-    color-scheme: light dark;
-    color: var(--text-color);
-    background-color: var(--background-color);
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+        color-scheme: light dark;
+        color: var(--text-color);
+        background-color: var(--background-color);
 
-body {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100vh;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+    }
 }

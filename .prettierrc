@@ -1,22 +1,25 @@
 {
   "printWidth": 140,
-  "tabWidth": 4,
-  "singleQuote": false,
+  "tabWidth": 2,
   "arrowParens": "always",
   "trailingComma": "all",
   "semi": true,
   "bracketSameLine": false,
   "bracketSpacing": true,
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-tailwindcss"],
+  "singleQuote": true,
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "jsxSingleQuote": false,
   "overrides": [
     {
-      "files": ["*.{ts,tsx}"],
+      "files": [
+        "*.{json,html,css}"
+      ],
       "options": {
-        "jsxSingleQuote": false,
-        "tabWidth": 2,
-        "singleQuote": true,
-        "arrowParens": "always"
+        "singleQuote": false,
+        "tabWidth": 4
       }
     }
   ]
