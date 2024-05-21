@@ -7,7 +7,7 @@ export const App = () => {
           <h2 className="text-xl font-bold">React app template</h2>
         </div>
         <p>
-          <code>Vite/React</code>,<code>Typescript</code>,<code>TailwindCSS</code>, <code>Prettier</code>.
+          <code>Vite/React</code>, <code>Typescript</code>, <code>TailwindCSS</code>, <code>Prettier</code>.
         </p>
       </div>
     </section>
