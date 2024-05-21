@@ -15,20 +15,27 @@ export const App = () => {
   }, [updateBoard]);
 
   return (
-    <section>
-      <div className="container">
-        <div className="mt-5 flex gap-2">
+    <section className="grid min-h-screen items-center justify-center">
+      <div className="container space-y-2">
+        <header>
           <h2 className="flex gap-2 py-2 text-3xl font-bold text-purple-500">
             <span>
               Nums {size.cols}x{size.rows}
             </span>
             <button className="self-center rounded-md border border-purple-400 px-2 text-sm" onClick={handleReset}>
-              Refresh
+              New Game
             </button>
           </h2>
-        </div>
+        </header>
 
         <Grid board={board} size={DEFAULT_BOARD_SIZE} />
+
+        <footer className="text-sm text-slate-500">
+          &copy; 2024 Nums Game. GitHub:{' '}
+          <a href="https://github.com/floatrx/nums-demo" target="_blank" rel="noopener noreferrer">
+            floatrx/nums-demo
+          </a>
+        </footer>
       </div>
     </section>
   );

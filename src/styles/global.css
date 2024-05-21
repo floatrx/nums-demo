@@ -26,4 +26,8 @@
         min-width: 320px;
         min-height: 100vh;
     }
+
+    a {
+        @apply text-blue-400;
+    }
 }
