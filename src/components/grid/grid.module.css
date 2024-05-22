@@ -1,3 +1,3 @@
 .wrapper {
-    @apply grid w-fit gap-1 sm:gap-2;
+    @apply m-auto grid w-fit gap-1 sm:gap-2;
 }

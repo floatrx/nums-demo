@@ -14,7 +14,7 @@ export const calculateGridSize = (): TGridSize => {
   const gap = 8;
 
   // Calculate the total space taken by one cell including the gap
-  const totalCellWidth = cellSize + gap * 1.2;
+  const totalCellWidth = cellSize + gap;
   const totalCellHeight = cellSize + gap * 1.5;
 
   // Calculate the number of columns and rows that fit in the window

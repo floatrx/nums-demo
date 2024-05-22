@@ -70,48 +70,46 @@ export const App = () => {
   }, [score]);
 
   return (
-    <section className="grid min-h-dvh items-center justify-center">
-      <div className="space-y-2">
-        <header className="flex gap-2 py-2 text-3xl font-bold text-purple-500">
-          <h2 className="flex gap-2">
-            <span className="text-primary-gradient">
-              Nums{' • '}
-              <small>
-                {size.cols}×{size.rows}
-              </small>
-            </span>
-            <button className="btn" onClick={() => updateBoard()}>
-              New Game
+    <section className="m-auto grid min-h-dvh items-center justify-center space-y-2 px-4">
+      <header className="flex gap-2 py-2 text-3xl font-bold text-purple-500">
+        <h2 className="flex gap-2">
+          <span className="text-primary-gradient">
+            Nums{' • '}
+            <small>
+              {size.cols}×{size.rows}
+            </small>
+          </span>
+          <button className="btn" onClick={() => updateBoard()}>
+            New Game
+          </button>
+          {!!shuffleCount && (
+            <button className="self-center rounded-md border border-purple-400 px-2 text-sm" onClick={shuffleUnsolved}>
+              Shuffle
             </button>
-            {!!shuffleCount && (
-              <button className="self-center rounded-md border border-purple-400 px-2 text-sm" onClick={shuffleUnsolved}>
-                Shuffle
-              </button>
-            )}
-          </h2>
-          {!!score && (
-            <span>
-              🕹️ {score} <span className="pulse inline-flex animate-pulse align-super text-sm">{boosterK > 1 ? `×${boosterK}` : ''}</span>
-            </span>
           )}
-        </header>
+        </h2>
+        {!!score && (
+          <span>
+            🕹️ {score} <span className="pulse inline-flex animate-pulse align-super text-sm">{boosterK > 1 ? `×${boosterK}` : ''}</span>
+          </span>
+        )}
+      </header>
 
-        <Grid board={board} size={DEFAULT_BOARD_SIZE} onSolve={(score) => setScore((prev) => prev + score * boosterK)} />
+      <Grid board={board} size={DEFAULT_BOARD_SIZE} onSolve={(score) => setScore((prev) => prev + score * boosterK)} />
 
-        <footer className="pt-2 text-sm text-slate-500">
-          <p>
-            Select two cells with the <strong>same number</strong> or with a <strong>sum of 10</strong> to score points. Fast matches give a
-            booster multiplier.
-          </p>
-          <p>
-            Check source code on my GitHub:{' '}
-            <a href="https://github.com/floatrx/nums-demo" target="_blank" rel="noopener noreferrer">
-              floatrx/nums-demo
-            </a>
-            .
-          </p>
-        </footer>
-      </div>
+      <footer className="pt-2 text-sm text-slate-500">
+        <p>
+          Select two cells with the <strong>same number</strong> or with a <strong>sum of 10</strong> to score points. Fast matches give a
+          booster multiplier.
+        </p>
+        <p>
+          Check source code on my GitHub:{' '}
+          <a href="https://github.com/floatrx/nums-demo" target="_blank" rel="noopener noreferrer">
+            floatrx/nums-demo
+          </a>
+          .
+        </p>
+      </footer>
     </section>
   );
 };
