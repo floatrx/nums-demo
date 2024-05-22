@@ -11,7 +11,7 @@ export const useAnimation = () => {
     ref.current?.classList.add('animation-shake');
     const timer = setTimeout(() => {
       ref.current?.classList.remove('animation-shake');
-    }, 500);
+    }, 350);
 
     return () => clearTimeout(timer);
   }, []);
