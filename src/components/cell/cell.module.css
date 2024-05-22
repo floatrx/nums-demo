@@ -6,16 +6,17 @@
         transform: scale(0.8);
     }
     100% {
-        transform: scale(2);
+        transform: scale(4) rotate(15deg);
         opacity: 0;
     }
 }
 .cell {
-    @apply flex size-6 cursor-pointer items-center justify-center rounded-md transition-all sm:size-10;
+    @apply flex size-[32px] transform cursor-pointer items-center justify-center rounded-lg will-change-transform;
+    @apply transition-all duration-100 ease-linear;
+    @apply text-lg font-black text-[#520e5e];
+    @apply from-primary to-secondary bg-gradient-to-t shadow shadow-blue-50/10;
 
-    @apply text-lg font-black text-black;
-
-    @apply bg-gradient-to-b from-orange-300 to-orange-500 shadow shadow-blue-50/10;
+    text-shadow: 1px 1px 1px #ffffff60;
 
     &:hover {
         @apply scale-110;

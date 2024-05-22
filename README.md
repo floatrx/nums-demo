@@ -2,8 +2,10 @@
 
 ### Demo https://nums-demo.vercel.app/
 
-![Screenshot](./nums.jpeg)
+![Screenshot](public/nums.jpeg)
 
+> [!WARNING]
+> This project was created to complete a test assignment. The functionality was implemented **according to the assignment requirements**.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

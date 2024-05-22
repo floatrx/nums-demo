@@ -1,13 +1,17 @@
-export type ICoordinates = [number, number];
+export type TCoordinates = [number, number];
 
-export interface IGridSize {
+export type TGridSize = {
   rows: number;
   cols: number;
-}
+};
 
-export interface ICell {
+export type TCell = {
   value: number;
-  coordinates: ICoordinates;
-}
+  coordinates: TCoordinates;
+};
 
-export type IBoard = ICell[][];
+export type TBoard = TCell[][];
+
+export type TCellsQueue = TCoordinates[];
+
+export type Timeout = ReturnType<typeof setTimeout> | null;

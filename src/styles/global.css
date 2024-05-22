@@ -1,19 +1,18 @@
+@import "colors.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     :root {
-        --background-color: #201f2f;
-        --text-color: #f4f4ff;
-
         font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
         line-height: 1.5;
         font-weight: 400;
 
         color-scheme: light dark;
-        color: var(--text-color);
-        background-color: var(--background-color);
+        color: var(--foreground);
+        background-color: var(--background);
 
         font-synthesis: none;
         text-rendering: optimizeLegibility;
@@ -21,13 +20,34 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
+    html,
+    body {
+        @apply min-h-dvh;
+    }
+
     body {
         margin: 0;
         min-width: 320px;
-        min-height: 100vh;
+        /*touch-action: none;*/
+        touch-action: pan-x pan-y;
+        /*background: url("/looper.svg") center/200% no-repeat;*/
+        background:
+            url("/looper.svg") center/200% no-repeat,
+            radial-gradient(circle at top center, rgba(102, 0, 255, 0.2) 0%, rgba(0, 0, 0, 100%) 100%) no-repeat fixed;
     }
 
     a {
-        @apply text-blue-400;
+        @apply text-primary;
+    }
+}
+
+@layer components {
+    .text-primary-gradient {
+        @apply from-primary to-secondary bg-gradient-to-r bg-clip-text text-transparent;
+    }
+    .btn {
+        @apply shadow-md;
+        @apply self-center rounded-md border border-purple-400 px-2 text-sm;
+        @apply text-primary-gradient;
     }
 }
