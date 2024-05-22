@@ -71,7 +71,7 @@ export const App = () => {
 
   return (
     <section className="m-auto grid min-h-dvh items-center justify-center space-y-2 px-4">
-      <header className="flex gap-2 py-2 text-3xl font-bold text-purple-500">
+      <header className="flex gap-2 py-2 font-bold text-purple-500 md:text-3xl">
         <h2 className="flex gap-2">
           <span className="text-primary-gradient">
             Nums{' • '}
@@ -80,17 +80,18 @@ export const App = () => {
             </small>
           </span>
           <button className="btn" onClick={() => updateBoard()}>
-            New Game
+            New <span className="hidden sm:inline">Game</span>
           </button>
           {!!shuffleCount && (
-            <button className="self-center rounded-md border border-purple-400 px-2 text-sm" onClick={shuffleUnsolved}>
+            <button className="btn" onClick={shuffleUnsolved}>
               Shuffle
             </button>
           )}
         </h2>
         {!!score && (
           <span>
-            🕹️ {score} <span className="pulse inline-flex animate-pulse align-super text-sm">{boosterK > 1 ? `×${boosterK}` : ''}</span>
+            🕹️ <span className="text-primary-gradient">{score}</span>{' '}
+            <span className="pulse inline-flex animate-pulse align-super text-sm">{boosterK > 1 ? `×${boosterK}` : ''}</span>
           </span>
         )}
       </header>
