@@ -12,7 +12,7 @@ export const App = () => {
   const [shuffleCount, setShuffleCount] = useState(0);
   const [score, setScore] = useState(0);
   const [boosterK, setBoosterK] = useState(1);
-  const timerRef = useRef<Timeout>(null);
+  const boosterTimerRef = useRef<Timeout>(null);
 
   const size = DEFAULT_BOARD_SIZE; // temporary -> TODO: remove
 
@@ -58,19 +58,19 @@ export const App = () => {
     setBoosterK((prev) => Math.min(prev + 1, BOOSTER_MAX));
 
     // Clear any existing timer
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
+    if (boosterTimerRef.current) {
+      clearTimeout(boosterTimerRef.current);
     }
 
     // Set a new timer to reset boosterK after 5 seconds
-    timerRef.current = setTimeout(() => {
+    boosterTimerRef.current = setTimeout(() => {
       setBoosterK(1);
     }, BOOSTER_RESET_INTERVAL);
 
     // Clean up the timer on component unmount
     return () => {
-      if (!timerRef.current) return;
-      clearTimeout(timerRef.current);
+      if (!boosterTimerRef.current) return;
+      clearTimeout(boosterTimerRef.current);
     };
   }, [score]);
 
