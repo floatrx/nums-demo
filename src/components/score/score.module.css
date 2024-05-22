@@ -1,0 +1,12 @@
+/*  styles */
+.wrapper {
+    @apply flex gap-1;
+}
+
+.value {
+    @apply text-primary-gradient;
+}
+
+.multiplier {
+    @apply inline-flex animate-pulse text-[10px];
+}

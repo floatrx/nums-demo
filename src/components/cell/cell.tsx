@@ -1,12 +1,13 @@
 import { useCallback } from 'react';
 
 // Styles
-import { cn } from '@/lib/utils.ts';
+import { cn } from '@/lib/utils';
 import s from './cell.module.css';
+import type { TCoordinates } from '@/types/game';
 
 interface IProps {
   coords: [number, number];
-  onClick?: (coords: [number, number]) => void;
+  onClick?: (coords: TCoordinates) => void;
   value?: number;
   selected?: boolean;
   passed?: boolean;

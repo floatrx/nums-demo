@@ -1,0 +1,7 @@
+.section {
+    @apply m-auto grid min-h-dvh items-center justify-center space-y-2 px-4;
+}
+
+.heading {
+    @apply flex gap-2 py-2 font-bold text-purple-500 md:text-3xl;
+}

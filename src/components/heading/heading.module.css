@@ -1,0 +1,16 @@
+/*  styles */
+.wrapper {
+    @apply flex gap-2;
+}
+
+.name {
+    @apply text-primary-gradient;
+}
+
+.button {
+    @apply btn;
+}
+
+.optional {
+    @apply hidden sm:inline;
+}

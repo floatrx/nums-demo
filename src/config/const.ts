@@ -1,6 +1,6 @@
-import { TGridSize } from '@/types/game.ts';
+import { TGridSize } from '@/types/game';
 
-import { calculateGridSize } from '@/lib/grid.ts';
+import { calculateGridSize } from '@/lib/grid';
 
 export const DEFAULT_BOARD_SIZE: TGridSize = calculateGridSize();
 

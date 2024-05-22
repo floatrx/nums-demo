@@ -1,4 +1,4 @@
-import { TGridSize } from '@/types/game.ts';
+import { TGridSize } from '@/types/game';
 
 /**
  * Calculate the grid size based on the window size

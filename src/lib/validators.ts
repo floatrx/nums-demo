@@ -6,8 +6,8 @@
  * 1. validateSelection
  * 2. validateSolution
  */
-import { TBoard, TCellsQueue } from '@/types/game.ts';
-import { SCORE_DEFAULT, SCORE_TEN } from '@/config/const.ts';
+import { TBoard, TCellsQueue } from '@/types/game';
+import { SCORE_DEFAULT, SCORE_TEN } from '@/config/const';
 
 /**
  * Check if the selected cells are valid according to the game rules

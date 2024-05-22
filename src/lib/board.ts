@@ -1,6 +1,6 @@
-import { TBoard, TCell, TGridSize } from '@/types/game.ts';
+import { TBoard, TCell, TGridSize } from '@/types/game';
 
-import { getRandomNumber } from '@/lib/utils.ts';
+import { getRandomNumber } from '@/lib/utils';
 
 /**
  * Generate array of cells according to the size

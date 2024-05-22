@@ -44,7 +44,7 @@
 
 @layer components {
     .text-primary-gradient {
-        @apply from-primary to-secondary bg-gradient-to-r bg-clip-text text-transparent;
+        @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
     }
     .btn {
         @apply shadow-md;

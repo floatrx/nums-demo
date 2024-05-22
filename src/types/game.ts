@@ -14,4 +14,4 @@ export type TBoard = TCell[][];
 
 export type TCellsQueue = TCoordinates[];
 
-export type Timeout = ReturnType<typeof setTimeout> | null;
+export type TTimeout = ReturnType<typeof setTimeout> | null;
