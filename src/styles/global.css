@@ -9,11 +9,6 @@
         font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
         line-height: 1.5;
         font-weight: 400;
-
-        color-scheme: light dark;
-        color: var(--foreground);
-        background-color: var(--background);
-
         font-synthesis: none;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
@@ -31,10 +26,10 @@
         min-width: 320px;
         /*touch-action: none;*/
         touch-action: pan-x pan-y;
-        /*background: url("/looper.svg") center/200% no-repeat;*/
         background:
             url("/looper.svg") center/200% no-repeat,
-            radial-gradient(circle at top center, rgba(102, 0, 255, 0.2) 0%, rgba(0, 0, 0, 100%) 100%) no-repeat fixed;
+            radial-gradient(circle at top center, rgba(102, 0, 255, 0.2) 0%, rgba(0, 0, 0, 100%) 100%) no-repeat fixed,
+            #000;
     }
 
     a {
@@ -44,7 +39,7 @@
 
 @layer components {
     .text-primary-gradient {
-        @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+        @apply from-primary to-secondary bg-gradient-to-r bg-clip-text text-transparent;
     }
     .btn {
         @apply shadow-md;
