@@ -7,8 +7,8 @@ export default defineConfig(({ mode }) => {
   process.env = Object.assign(process.env, loadEnv(mode, process.cwd(), ''));
   return {
     plugins: [react()],
-    server:{
-      port: parseInt(process.env.VITE_PORT || '4000')
+    server: {
+      port: parseInt(process.env.VITE_PORT || '4000'),
     },
     optimizeDeps: {
       exclude: ['js-big-decimal'],
@@ -31,5 +31,5 @@ export default defineConfig(({ mode }) => {
       minify: true,
       sourcemap: false,
     },
-  }
+  };
 });
