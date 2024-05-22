@@ -1,7 +1,16 @@
 // public/sw.js
 
 const CACHE_NAME = 'my-pwa-cache-v1';
-const urlsToCache = ['/', '/favicon.svg'];
+const urlsToCache = [
+  '/',
+  '/favicon.svg',
+  '/manifest.json',
+  '/mp3/click.mp3',
+  '/mp3/click2.mp3',
+  '/mp3/error.mp3',
+  '/mp3/success.mp3',
+  '/looper.svg',
+];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
