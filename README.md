@@ -2,7 +2,7 @@
 
 ### Demo https://nums.floatrx.net/
 
-![Screenshot](public/nums.jpeg)
+![Screenshot](public/nums.png)
 
 > [!WARNING]
 > This project was created to complete a test assignment. The functionality was implemented **according to the assignment requirements**.
