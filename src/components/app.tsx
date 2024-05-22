@@ -6,8 +6,6 @@ import { generateBoard } from '@/lib/board.ts';
 import { BOOSTER_MAX, BOOSTER_RESET_INTERVAL, DEFAULT_BOARD_SIZE, SHUFFLE_MAX, SHUFFLE_REFRESH_INTERVAL } from '@/config/const.ts';
 import { getRandomNumber } from '@/lib/utils.ts';
 
-// Styles
-
 export const App = () => {
   const [board, setBoard] = useState<TBoard>(generateBoard(DEFAULT_BOARD_SIZE));
   const [shuffleCount, setShuffleCount] = useState(0);

@@ -1,0 +1,15 @@
+{
+  "short_name": "Nums",
+  "name": "Nums Game",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#C66EF8",
+  "background_color": "#C66EF8"
+}
