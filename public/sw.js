@@ -7,7 +7,7 @@ const urlsToCache = [
   '/favicon.svg',
   '/manifest.json',
   '/mp3/click.mp3',
-  '/mp3/click2.mp3',
+  '/mp3/deselect.mp3',
   '/mp3/error.mp3',
   '/mp3/success.mp3',
   '/looper.svg',
