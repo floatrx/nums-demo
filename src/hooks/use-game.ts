@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { generateBoard } from '@/lib/board';
 import { getRandomNumber } from '@/lib/utils';
-import { playSound } from '@/lib/sounds';
-
 import type { TBoard, TCell, TTimeout } from '@/types/game';
-
 import { BOOSTER_MAX, BOOSTER_RESET_INTERVAL, DEFAULT_BOARD_SIZE, SHUFFLE_MAX, SHUFFLE_REFRESH_INTERVAL } from '@/config/const';
 
 /**
@@ -23,7 +20,6 @@ export const useGame = () => {
     setScore(0);
     setBoosterK(1);
     setShuffleCount(0);
-    playSound('success');
   }, []);
 
   // Shuffle the unsolved cells

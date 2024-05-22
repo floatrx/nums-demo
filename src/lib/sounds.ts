@@ -1,12 +1,13 @@
 import { Howl } from 'howler';
 
-type SoundTypes = 'click' | 'deselect' | 'error' | 'success';
+type SoundTypes = 'click' | 'deselect' | 'error' | 'success' | 'shake';
 
 const sounds: Record<SoundTypes, Howl> = {
   click: new Howl({ src: ['/mp3/click.mp3'] }),
   deselect: new Howl({ src: ['/mp3/deselect.mp3'], volume: 0.4 }),
   error: new Howl({ src: ['/mp3/error.mp3'] }),
   success: new Howl({ src: ['/mp3/success.mp3'] }),
+  shake: new Howl({ src: ['/mp3/shake.mp3'] }),
 };
 
 /**
