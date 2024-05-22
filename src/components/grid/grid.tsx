@@ -24,10 +24,9 @@ export const Grid: FC<IProps> = ({ board, onSolve }) => {
     setSelectedCells([]);
   }, []);
 
-  // Clear the selected cells and passed cells when the board changes
+  // Clear the selected cells board changes
   useEffect(() => {
     clearSelection();
-    setSolvedCells([]);
   }, [board, clearSelection]);
 
   // Check if the selected cells are valid
