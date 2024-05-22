@@ -5,6 +5,7 @@ import { generateBoard } from '@/lib/board.ts';
 
 import { BOOSTER_MAX, BOOSTER_RESET_INTERVAL, DEFAULT_BOARD_SIZE, SHUFFLE_MAX, SHUFFLE_REFRESH_INTERVAL } from '@/config/const.ts';
 import { getRandomNumber } from '@/lib/utils.ts';
+import { playSound } from '@/lib/sounds.ts';
 
 export const App = () => {
   const [board, setBoard] = useState<TBoard>(generateBoard(DEFAULT_BOARD_SIZE));
@@ -15,7 +16,13 @@ export const App = () => {
 
   const size = DEFAULT_BOARD_SIZE; // temporary -> TODO: remove
 
-  const updateBoard = useCallback(() => setBoard(generateBoard(DEFAULT_BOARD_SIZE)), []);
+  const resetGame = useCallback(() => {
+    setBoard(generateBoard(DEFAULT_BOARD_SIZE));
+    setScore(0);
+    setBoosterK(1);
+    setShuffleCount(0);
+    playSound('success');
+  }, []);
 
   // Shuffle the unsolved cells
   const shuffleUnsolved = useCallback(() => {
@@ -77,7 +84,7 @@ export const App = () => {
               {size.cols}×{size.rows}
             </small>
           </span>
-          <button className="btn" onClick={() => updateBoard()}>
+          <button className="btn" onClick={() => resetGame()}>
             New <span className="hidden sm:inline">Game</span>
           </button>
           {!!shuffleCount && (
