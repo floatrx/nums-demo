@@ -76,7 +76,7 @@ export const Grid: FC<IProps> = ({ board, onSolve }) => {
             onClick={(coords) => {
               // Deselect if already selected
               if (selectedCells.includes(coords)) {
-                playSound('click2');
+                playSound('deselect');
                 setSelectedCells((prev) => prev.filter((c) => c !== coords));
                 return;
               }
