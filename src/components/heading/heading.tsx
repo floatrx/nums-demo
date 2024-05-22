@@ -1,4 +1,6 @@
+import { Shuffle } from 'lucide-react';
 import { TGridSize } from '@/types/game';
+import { cn } from '@/lib/utils';
 
 // Styles
 import s from './heading.module.css';
@@ -22,8 +24,8 @@ export const Heading: FC<IProps> = ({ size, onReset, canShuffle, onShuffle }) =>
       New <span className={s.optional}>Game</span>
     </button>
     {canShuffle && (
-      <button className={s.button} onClick={onShuffle}>
-        Shuffle
+      <button className={cn(s.button, s.shuffle)} onClick={onShuffle}>
+        <Shuffle className={s.icon} />
       </button>
     )}
   </h2>

@@ -9,7 +9,7 @@ import type { TBoard, TCellsQueue, TCoordinates } from '@/types/game';
  * @param board
  * @param onSolve
  */
-export const useGrid = ({ board, onSolve }: { board: TBoard; onSolve: (score: number) => void }) => {
+export const useGrid = ({ board, onSolve }: { board: TBoard; onSolve: (score: number, remainCount: number) => void }) => {
   const [selectedCells, setSelectedCells] = useState<TCellsQueue>([]);
   const [solvedCells, setSolvedCells] = useState<TCellsQueue>([]);
 
@@ -67,7 +67,10 @@ export const useGrid = ({ board, onSolve }: { board: TBoard; onSolve: (score: nu
           // Add the selected cells to the passed array
           setSolvedCells((prev) => [...prev, ...selectedCells]);
 
-          onSolve(score);
+          // Calculate the remaining cells count
+          const remainCount = board.length * board[0].length - solvedCells.length - 2;
+
+          onSolve(score, remainCount);
         },
         onError: () => {
           playSound('error');

@@ -9,6 +9,10 @@
 
 .button {
     @apply btn;
+
+    &.shuffle {
+        @apply absolute bottom-2 right-4 size-11 rounded-2xl border-2 text-white;
+    }
 }
 
 .optional {

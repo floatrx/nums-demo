@@ -12,13 +12,13 @@ interface IProps {
   className?: string;
   size: TGridSize;
   board: TBoard;
-  onSolve: (score: number) => void;
+  onSolve: (score: number, remainCount: number) => void;
 }
 
 export const Grid = forwardRef<HTMLDivElement, IProps>(({ className, ...props }, ref) => {
   const { selectedCells, solvedCells, handleCellClick } = useGrid(props);
   return (
-    <div id="grid" ref={ref} className={cn(s.wrapper, className)} style={{ grid: `auto / repeat(${DEFAULT_BOARD_SIZE.cols}, 1fr)` }}>
+    <div ref={ref} className={cn(s.wrapper, className)} style={{ grid: `auto / repeat(${DEFAULT_BOARD_SIZE.cols}, 1fr)` }}>
       {props.board.map((row, i) =>
         row.map((cell, j) => (
           <Cell

@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { playSound } from '@/lib/sounds.ts';
+import { playSound } from '@/lib/sounds';
 
 export const useAnimation = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -9,6 +9,7 @@ export const useAnimation = () => {
     playSound('shake');
 
     ref.current?.classList.add('animation-shake');
+
     const timer = setTimeout(() => {
       ref.current?.classList.remove('animation-shake');
     }, 350);
