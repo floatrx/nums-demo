@@ -89,9 +89,9 @@ export const App = () => {
           )}
         </h2>
         {!!score && (
-          <span>
+          <span className="flex gap-1">
             🕹️ <span className="text-primary-gradient">{score}</span>{' '}
-            <span className="pulse inline-flex animate-pulse align-super text-sm">{boosterK > 1 ? `×${boosterK}` : ''}</span>
+            <span className="pulse inline-flex animate-pulse text-[10px]">{boosterK > 1 ? `×${boosterK}` : ''}</span>
           </span>
         )}
       </header>
