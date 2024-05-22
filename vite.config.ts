@@ -3,12 +3,24 @@ import { defineConfig, loadEnv } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 import path from 'node:path';
+import fs from 'fs';
+
+// Load existing manifest.json
+const manifestPath = path.resolve(__dirname, 'public/manifest.json');
+const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   process.env = Object.assign(process.env, loadEnv(mode, process.cwd(), ''));
   return {
-    plugins: [react(), VitePWA()],
+    plugins: [
+      react(),
+      VitePWA({
+        registerType: 'autoUpdate',
+        includeAssets: ['favicon.svg'], // you can include more assets like 'robots.txt', 'apple-touch-icon.png', etc.
+        manifest, // use the loaded manifest
+      }),
+    ],
     server: {
       port: parseInt(process.env.VITE_PORT || '4000'),
     },
