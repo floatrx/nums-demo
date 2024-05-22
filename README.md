@@ -1,6 +1,6 @@
 # Nums game (React + Vite)
 
-### Demo https://nums-demo.vercel.app/
+### Demo https://nums.floatrx.net/
 
 ![Screenshot](public/nums.jpeg)
 
