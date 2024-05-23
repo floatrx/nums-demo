@@ -5,7 +5,7 @@ import { Cell } from '@/components/cell/cell';
 import { DEFAULT_BOARD_SIZE } from '@/config/const';
 import type { TBoard, TBoardSize } from '@/types/game';
 // Styles
-import s from './board.module.css';
+import s from './board.module.scss';
 
 interface IProps {
   className?: string;

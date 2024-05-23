@@ -44,5 +44,17 @@ export default defineConfig(({ mode }) => {
       minify: true,
       sourcemap: false,
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/styles/global";',
+        },
+      },
+      modules: {
+        exportGlobals: true,
+        scopeBehaviour: 'local',
+        generateScopedName: '[local]-[hash:base64:4]',
+      },
+    },
   };
 });

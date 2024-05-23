@@ -1,8 +1,7 @@
-import { Shuffle } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { RotateCw, Shuffle } from 'lucide-react';
 import type { TBoardSize } from '@/types/game';
 // Styles
-import s from './heading.module.css';
+import s from './heading.module.scss';
 
 interface IProps {
   size: TBoardSize;
@@ -19,13 +18,15 @@ export const Heading: FC<IProps> = ({ size, onReset, canShuffle, onShuffle }) =>
         {size.cols}×{size.rows}
       </small>
     </span>
-    <button className={s.button} onClick={onReset}>
-      New <span className={s.optional}>Game</span>
-    </button>
-    {canShuffle && (
-      <button className={cn(s.button, s.shuffle)} onClick={onShuffle}>
-        <Shuffle className={s.icon} />
+    <div className={s.actions}>
+      <button className={s.button} onClick={onReset}>
+        <RotateCw className={s.icon} />
       </button>
-    )}
+      {canShuffle && (
+        <button className={s.button} onClick={onShuffle}>
+          <Shuffle className={s.icon} />
+        </button>
+      )}
+    </div>
   </h2>
 );

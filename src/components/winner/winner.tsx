@@ -1,5 +1,5 @@
 // Styles
-import s from './winner.module.css';
+import s from './winner.module.scss';
 
 interface IProps {
   score: number;

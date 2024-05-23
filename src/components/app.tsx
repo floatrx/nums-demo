@@ -13,13 +13,13 @@ export const App = () => {
       {isWin ? (
         <Winner score={score} onReset={resetGame} />
       ) : (
-        <section>
+        <>
           <header className="header">
             <Heading onReset={resetGame} onShuffle={shuffle} canShuffle={!!shuffleCount && !isWin} size={DEFAULT_BOARD_SIZE} />
             <Score value={score} multiplier={boosterK} />
           </header>
-          <Board ref={boardRef} board={board} size={DEFAULT_BOARD_SIZE} onSolve={requestSolver} />
-        </section>
+          <Board className="board" ref={boardRef} board={board} size={DEFAULT_BOARD_SIZE} onSolve={requestSolver} />
+        </>
       )}
       <Footer />
     </main>

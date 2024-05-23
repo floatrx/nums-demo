@@ -37,7 +37,10 @@
 }
 
 .button {
-    @apply btn text-2xl font-bold tracking-tight;
+    @apply text-2xl font-bold tracking-tight;
+
+    // test: extend from global
+    @extend .btn;
 
     &:global {
         will-change: transform;

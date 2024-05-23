@@ -1,0 +1,39 @@
+// test tailwindcss
+.test {
+    @apply bg-red-500;
+}
+
+.btn-circle {
+    @apply flex size-7 items-center justify-center
+  rounded-2xl
+  border-2
+  border-primary/10
+  bg-black/70
+  p-[3px]
+  text-white
+  transition-all;
+
+    &:hover {
+        @apply border-primary;
+    }
+}
+
+.text-primary-gradient {
+    @apply bg-gradient-to-r
+  from-primary
+  to-secondary
+  bg-clip-text
+  text-transparent;
+}
+
+.btn {
+    @apply text-primary-gradient
+  self-center
+  rounded-md
+  border
+  border-purple-400 bg-black/10
+  px-2
+  text-sm
+  shadow-md
+  backdrop-blur;
+}

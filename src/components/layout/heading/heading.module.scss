@@ -1,0 +1,23 @@
+.wrapper {
+    @apply flex gap-2;
+}
+
+.name {
+    @extend .text-primary-gradient;
+}
+
+.actions {
+    @apply absolute right-6 top-2 z-10 flex gap-1;
+}
+
+.button {
+    @extend .btn-circle;
+    &:global {
+        will-change: transform, filter, opacity;
+        animation: pop 0.5s ease-in-out;
+    }
+}
+
+.optional {
+    @apply hidden sm:inline;
+}

@@ -1,5 +1,5 @@
 // Styles
-import s from './score.module.css';
+import s from './score.module.scss';
 
 interface IProps {
   value: number;

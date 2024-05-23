@@ -4,7 +4,7 @@
 }
 
 .value {
-    @apply text-primary-gradient;
+    @extend .text-primary-gradient;
 }
 
 .multiplier {
