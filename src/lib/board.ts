@@ -40,9 +40,14 @@ export const calculateBoardSize = (): TBoardSize => {
 
   return { rows, cols };
 };
+
 /**
  * Sort the selected cells by their coordinates
  * @param selection
  * @returns tuple of sorted cells 1st is primary and 2nd is secondary
  */
-export const sortCells = (selection: TCellsQueue): TCellsQueue => selection.toSorted(([x1, y1], [x2, y2]) => x1 * y1 - x2 * y2);
+export function sortCells(selection: TCellsQueue): TCellsQueue {
+  return selection.toSorted(([x1, y1], [x2, y2]) => {
+    return x1 !== x2 ? x1 - x2 : y1 - y2; // sort by weight
+  });
+}
