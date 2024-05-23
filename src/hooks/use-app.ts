@@ -26,6 +26,7 @@ export const useApp = () => {
     setBoosterK(1);
     setShuffleCount(0);
     setWin(false);
+    playSound('shake');
     shake();
   }, [shake]);
 
