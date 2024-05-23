@@ -35,14 +35,15 @@ export const validateSelection: ValidateSelection = (selectedCells, solvedCells,
       // Check 1st row and last row and skip the cells that are not in the path
       if ((row === primaryX && col <= primaryY) || (row === secondaryX && col >= secondaryY)) continue;
       // Skip the cells that are already solved
-      if (solvedCells.map((e) => e.toString()).includes([row, col].toString())) continue;
+      if (solvedCells.some(([px, py]) => px === row && py === col)) continue;
+      // if (solvedCells.map((e) => e.toString()).includes([row, col].toString())) continue;
       linearPath.push([row, col]);
     }
   }
   /** When linearPath has only 1 element, it means that
    * the selected cells (primary & secondary) are in order!
    */
-  if (linearPath.length === 1) {
+  if (linearPath.length <= 1) {
     console.log('cells are in order');
     return true;
   }

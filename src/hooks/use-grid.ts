@@ -51,8 +51,8 @@ export const useGrid = ({ board, onSolve }: { board: TBoard; onSolve: (score: nu
     if (selectedCells.length !== 2) return;
 
     const boardSize: TGridSize = {
-      rows: board.length,
-      cols: board[0].length,
+      rows: board.length - 1,
+      cols: board[0].length - 1,
     };
 
     // Check if the selected cells are valid according to the game rules
