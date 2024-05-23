@@ -48,7 +48,7 @@
     }
 
     .button {
-        @apply btn text-2xl;
+        @apply btn mt-3 text-2xl;
         animation: fadeInUp 0.35s ease-in-out 0.3s both;
     }
 }

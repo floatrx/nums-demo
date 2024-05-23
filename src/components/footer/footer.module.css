@@ -1,4 +1,4 @@
 /*  styles */
 .footer {
-    @apply pt-2 text-sm text-slate-500;
+    @apply pt-2 text-[12px] text-slate-500;
 }

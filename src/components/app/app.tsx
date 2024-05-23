@@ -13,7 +13,7 @@ import s from './app.module.css';
 import { playSound } from '@/lib/sounds';
 
 export const App = () => {
-  const [isWin, setWin] = useState(false);
+  const [isWin, setWin] = useState(true);
   const { ref, shake } = useAnimation();
   const { board, boosterK, resetGame, score, setScore, shuffleCount, shuffleUnsolved } = useGame();
 

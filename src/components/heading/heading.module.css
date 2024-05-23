@@ -12,7 +12,7 @@
 
     &.shuffle {
         @apply absolute
-        bottom-4
+        bottom-8
         right-5
         flex
         size-9
