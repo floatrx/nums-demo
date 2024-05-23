@@ -31,11 +31,10 @@ export const validateSelection: ValidateSelection = (selectedCells, solvedCells,
    */
   const linearPath: TCellsQueue = [];
   for (let row = primaryX; row <= secondaryX; row++) {
-    for (let col = 0; col <= boardSize.cols; col++) {
+    for (let col = 0; col < boardSize.cols; col++) {
       // Check 1st row and last row and skip the cells that are not in the path
       if ((row === primaryX && col <= primaryY) || (row === secondaryX && col >= secondaryY)) continue;
       // Skip the cells that are already solved
-      // if (solvedCells.some(([px, py]) => px === row && py === col)) continue;
       if (solvedCells.map((e) => e.toString()).includes([row, col].toString())) continue;
       linearPath.push([row, col]);
     }
@@ -92,7 +91,7 @@ export const validateSelection: ValidateSelection = (selectedCells, solvedCells,
     }
   }
 
-  console.log('all conditions met');
+  console.log('all conditions not met');
   return true; // all conditions met
 };
 
