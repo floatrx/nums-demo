@@ -3,7 +3,6 @@ import { Footer } from '@/components/footer/footer';
 import { Grid } from '@/components/grid/grid';
 import { Heading } from '@/components/heading/heading';
 import { Score } from '@/components/score/score';
-import { calcPercentage } from '@/lib/utils';
 import { useAnimation } from '@/hooks/use-animation';
 import { useGame } from '@/hooks/use-game';
 
@@ -17,8 +16,6 @@ export const App = () => {
   const [isWin, setWin] = useState(false);
   const { ref, shake } = useAnimation();
   const { board, boosterK, resetGame, score, setScore, shuffleCount, shuffleUnsolved } = useGame();
-
-  const totalCells = DEFAULT_BOARD_SIZE.rows * DEFAULT_BOARD_SIZE.cols;
 
   const handleShuffle = useCallback(() => {
     shuffleUnsolved();
@@ -54,7 +51,7 @@ export const App = () => {
             size={DEFAULT_BOARD_SIZE}
             onSolve={(score, remain) => {
               setScore((prev) => prev + score * boosterK);
-              if (calcPercentage(remain, totalCells) <= 15) {
+              if (remain <= 1) {
                 setWin(true);
                 playSound('win');
               }
