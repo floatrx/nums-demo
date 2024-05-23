@@ -12,8 +12,8 @@
 
     &.shuffle {
         @apply absolute
-        bottom-8
         right-5
+        top-5
         flex
         size-9
         items-center
@@ -22,6 +22,11 @@
         border-2
         p-1.5
         text-white;
+
+        &:global {
+            will-change: transform;
+            animation: pop 0.35s ease-in-out 0.3s both;
+        }
     }
 }
 

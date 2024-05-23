@@ -1,29 +1,38 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { generateBoard } from '@/lib/board';
-import { getRandomNumber } from '@/lib/utils';
-import type { TBoard, TCell, TTimeout } from '@/types/game';
+
 import { BOOSTER_MAX, BOOSTER_RESET_INTERVAL, DEFAULT_BOARD_SIZE, SHUFFLE_MAX, SHUFFLE_REFRESH_INTERVAL } from '@/config/const';
+import { useAnimation } from '@/hooks/use-animation';
+import { generateBoard } from '@/lib/board';
+import { playSound } from '@/lib/sounds';
+import { getRandomNumber } from '@/lib/utils';
+
+import type { TBoard, TCell, TTimeout } from '@/types/game';
 
 /**
  * Higher level game logic containing the board state and game actions
  * See also: useGrid.ts
  */
-export const useGame = () => {
+export const useApp = () => {
+  const [isWin, setWin] = useState(false);
   const [board, setBoard] = useState<TBoard>(generateBoard(DEFAULT_BOARD_SIZE));
   const [shuffleCount, setShuffleCount] = useState(0);
   const [score, setScore] = useState(0);
   const [boosterK, setBoosterK] = useState(1);
   const boosterTimerRef = useRef<TTimeout>(null);
 
+  const { boardRef, shake } = useAnimation();
+
   const resetGame = useCallback(() => {
     setBoard(generateBoard(DEFAULT_BOARD_SIZE));
     setScore(0);
     setBoosterK(1);
     setShuffleCount(0);
-  }, []);
+    setWin(false);
+    shake();
+  }, [shake]);
 
   // Shuffle the unsolved cells
-  const shuffleUnsolved = useCallback(() => {
+  const shuffle = useCallback(() => {
     if (shuffleCount <= 0) return;
     const shuffledBoard = board.map((row) =>
       row.map(
@@ -36,7 +45,18 @@ export const useGame = () => {
     );
     setBoard(shuffledBoard);
     setShuffleCount((prev) => prev - 1);
-  }, [board, shuffleCount]);
+    shake();
+  }, [board, shake, shuffleCount]);
+
+  const requestSolver = useCallback(
+    (score: number, remain: number) => {
+      setScore((prev) => prev + score * boosterK);
+      if (remain > 1) return; // continue game...
+      setWin(true);
+      playSound('win');
+    },
+    [boosterK],
+  );
 
   // Increase the shuffle count after a certain interval
   useEffect(() => {
@@ -73,12 +93,14 @@ export const useGame = () => {
   }, [score]);
 
   return {
+    isWin,
     board,
     shuffleCount,
     score,
     boosterK,
     resetGame,
-    shuffleUnsolved,
-    setScore,
+    shuffle,
+    requestSolver,
+    boardRef,
   };
 };

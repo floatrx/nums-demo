@@ -1,12 +1,14 @@
 import { Shuffle } from 'lucide-react';
-import { TGridSize } from '@/types/game';
+
 import { cn } from '@/lib/utils';
+
+import { TBoardSize } from '@/types/game';
 
 // Styles
 import s from './heading.module.css';
 
 interface IProps {
-  size: TGridSize;
+  size: TBoardSize;
   onReset: () => void;
   onShuffle: () => void;
   canShuffle: boolean;

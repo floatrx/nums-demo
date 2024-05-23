@@ -1,8 +1,8 @@
-import { TGridSize } from '@/types/game';
+import { calculateBoardSize } from '@/lib/board';
 
-import { calculateGridSize } from '@/lib/grid';
+import { TBoardSize } from '@/types/game';
 
-export const DEFAULT_BOARD_SIZE: TGridSize = calculateGridSize();
+export const DEFAULT_BOARD_SIZE: TBoardSize = calculateBoardSize();
 
 export const ONE_SECOND = 1000;
 export const ONE_MINUTE = 60 * ONE_SECOND;

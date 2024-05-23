@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
+
 import { playSound } from '@/lib/sounds';
 import { validateSelection, validateSolution } from '@/lib/validators';
 
-import type { TBoard, TCellsQueue, TCoordinates, TGridSize } from '@/types/game';
+import type { TBoard, TBoardSize, TCellsQueue, TCoordinates } from '@/types/game';
 
 /**
  * Hook to handle the grid logic
  * @param board
  * @param onSolve
  */
-export const useGrid = ({ board, onSolve }: { board: TBoard; onSolve: (score: number, remainCount: number) => void }) => {
+export const useBoard = ({ board, onSolve }: { board: TBoard; onSolve: (score: number, remainCount: number) => void }) => {
   const [selectedCells, setSelectedCells] = useState<TCellsQueue>([]);
   const [solvedCells, setSolvedCells] = useState<TCellsQueue>([]);
 
@@ -50,7 +51,7 @@ export const useGrid = ({ board, onSolve }: { board: TBoard; onSolve: (score: nu
   useEffect(() => {
     if (selectedCells.length !== 2) return;
 
-    const boardSize: TGridSize = {
+    const boardSize: TBoardSize = {
       rows: board.length - 1,
       cols: board[0].length - 1,
     };

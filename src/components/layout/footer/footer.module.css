@@ -1,0 +1,7 @@
+/*  styles */
+.footer {
+    @apply pt-2 text-[12px] text-slate-500 opacity-40 transition-opacity;
+    &:hover {
+        @apply text-slate-200 opacity-100;
+    }
+}

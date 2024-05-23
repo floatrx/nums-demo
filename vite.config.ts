@@ -2,8 +2,8 @@ import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-import path from 'node:path';
 import fs from 'fs';
+import path from 'node:path';
 
 // Load existing manifest.json
 const manifestPath = path.resolve(__dirname, 'public/manifest.json');

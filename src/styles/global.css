@@ -1,4 +1,5 @@
 @import "colors.css";
+@import "animations.css";
 
 @tailwind base;
 @tailwind components;
@@ -24,8 +25,7 @@
         user-select: none;
         margin: 0;
         min-width: 320px;
-        /*touch-action: none;*/
-        touch-action: pan-x pan-y;
+        touch-action: none;
         background:
             url("/looper.svg") center/200% no-repeat,
             radial-gradient(circle at top center, rgba(102, 0, 255, 0.2) 0%, rgba(0, 0, 0, 100%) 100%) no-repeat fixed,
@@ -38,8 +38,30 @@
 }
 
 @layer components {
+    .main {
+        @apply m-auto
+        grid
+        min-h-dvh
+        items-center
+        justify-center
+        space-y-2 px-4;
+    }
+
+    .header {
+        @apply flex
+        gap-2
+        py-2
+        font-bold
+        text-purple-500
+        md:text-2xl;
+    }
+
     .text-primary-gradient {
-        @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+        @apply bg-gradient-to-r
+        from-primary
+        to-secondary
+        bg-clip-text
+        text-transparent;
     }
 
     .btn {

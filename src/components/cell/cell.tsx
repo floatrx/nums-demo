@@ -1,26 +1,20 @@
-import { useCallback } from 'react';
-
-// Styles
 import { cn } from '@/lib/utils';
-import s from './cell.module.css';
+
 import type { TCoordinates } from '@/types/game';
 
+// Styles
+import s from './cell.module.css';
+
 interface IProps {
-  coords: [number, number];
+  position: TCoordinates;
   onClick?: (coords: TCoordinates) => void;
   value?: number;
   selected?: boolean;
-  passed?: boolean;
+  solved?: boolean;
 }
 
-export const Cell: FC<IProps> = ({ coords, value, selected, passed, onClick }) => {
-  const handleSelect = useCallback(() => {
-    onClick?.(coords);
-  }, [onClick, coords]);
-
-  return (
-    <div onClick={handleSelect} className={cn(s.cell, selected && s.selected, passed && s.passed)}>
-      {value}
-    </div>
-  );
-};
+export const Cell: FC<IProps> = ({ position, value, selected, solved, onClick }) => (
+  <div onClick={() => onClick?.(position)} className={cn(s.cell, selected && s.selected, solved && s.passed)}>
+    {value}
+  </div>
+);

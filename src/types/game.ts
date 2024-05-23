@@ -1,6 +1,6 @@
 export type TCoordinates = [number, number];
 
-export type TGridSize = {
+export type TBoardSize = {
   rows: number;
   cols: number;
 };

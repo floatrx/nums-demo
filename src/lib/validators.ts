@@ -6,20 +6,22 @@
  * 1. validateSelection
  * 2. validateSolution
  */
-import { TBoard, TCellsQueue, type TGridSize } from '@/types/game';
 import { SCORE_DEFAULT, SCORE_TEN } from '@/config/const';
+import { sortCells } from '@/lib/board';
+
+import { TBoard, type TBoardSize, TCellsQueue, type TCoordinates } from '@/types/game';
 
 /**
  * Check if the selected cells are valid according to the game rules
  * @param coordinates
  * @param passed
  */
-export type ValidateSelection = (selectedCells: TCellsQueue, solvedCells: TCellsQueue, boardSize: TGridSize) => boolean;
+export type ValidateSelection = (selectedCells: TCellsQueue, solvedCells: TCellsQueue, boardSize: TBoardSize) => boolean;
 export const validateSelection: ValidateSelection = (selectedCells, solvedCells, boardSize) => {
   if (selectedCells.length <= 1) return true; // not enough cells selected
 
   // Get the selected cells as primary and secondary
-  const [cell1, cell2] = selectedCells.sort(([r1], [r2]) => r1 - r2);
+  const [cell1, cell2] = sortCells(selectedCells);
 
   // Get primary (p) and secondary (s) cell coordinates
   const [primaryX, primaryY] = cell1;
@@ -29,21 +31,21 @@ export const validateSelection: ValidateSelection = (selectedCells, solvedCells,
    * Check if the selected cells are in order
    * and there are no unsolved cells between them
    */
-  const linearPath: TCellsQueue = [];
+  const unsolvedInRow: TCellsQueue = [];
   for (let row = primaryX; row <= secondaryX; row++) {
     for (let col = 0; col < boardSize.cols; col++) {
       // Check 1st row and last row and skip the cells that are not in the path
       if ((row === primaryX && col <= primaryY) || (row === secondaryX && col >= secondaryY)) continue;
       // Skip the cells that are already solved
-      if (solvedCells.map((e) => e.toString()).includes([row, col].toString())) continue;
-      linearPath.push([row, col]);
+      if (solvedCells.map((cell) => cell.toString()).includes([row, col].toString())) continue;
+      unsolvedInRow.push([row, col]);
     }
   }
   /** When linearPath has only 1 element, it means that
    * the selected cells (primary & secondary) are in order!
    */
-  if (linearPath.length <= 1) {
-    console.log('cells are in order');
+  if (!unsolvedInRow.length) {
+    console.log('[1] cells are in order');
     return true;
   }
 
@@ -55,7 +57,7 @@ export const validateSelection: ValidateSelection = (selectedCells, solvedCells,
    * Diagonal selections are not allowed!
    */
   if (primaryX !== secondaryX && primaryY !== secondaryY) {
-    console.log('cells are not in the same row or column');
+    console.log('[2] cells are not in the same row or column');
     return false; // cells are not in the same row or column
   }
 
@@ -86,12 +88,12 @@ export const validateSelection: ValidateSelection = (selectedCells, solvedCells,
     const isInPassed = solvedCells.some(([px, py]) => px === x && py === y);
 
     if (!isSelectedCell && !isInPassed) {
-      console.log('cell not passed and not selected');
+      console.log('[3] cell not passed and not selected');
       return false; // a cell in the path is not passed and not one of the selected cells
     }
   }
 
-  console.log('all conditions not met');
+  console.log('[4] all conditions met');
   return true; // all conditions met
 };
 
@@ -111,7 +113,7 @@ export type ValidateSolution = (
  */
 export const validateSolution: ValidateSolution = ({ selectedCells, board }, { onSuccess, onError }) => {
   // Get the value of the selected cells
-  const getCellValue = ([x, y]: [number, number]) => board[x][y].value;
+  const getCellValue = ([x, y]: TCoordinates) => board[x][y].value;
 
   // Get the selected cells
   const [cell1, cell2] = selectedCells;

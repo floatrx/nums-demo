@@ -8,7 +8,11 @@
   "bracketSpacing": true,
   "endOfLine": "lf",
   "singleQuote": true,
-  "plugins": ["prettier-plugin-tailwindcss"],
+  "plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"],
+  "importOrder": ["(^react|react|vite)", "<THIRD_PARTY_MODULES>", "@/components/", "@/types", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderGroupNamespaceSpecifiers": true,
+  "importOrderSortSpecifiers": true,
   "jsxSingleQuote": false,
   "overrides": [
     {

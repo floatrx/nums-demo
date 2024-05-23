@@ -1,0 +1,46 @@
+.wrapper {
+    @apply flex
+    min-h-[80vh]
+    flex-col justify-center gap-2
+    text-center text-4xl text-white;
+}
+
+.icon {
+    @apply relative top-5 text-[120px];
+
+    &:global {
+        will-change: transform, filter;
+        animation: pop 0.35s ease-in-out both;
+    }
+}
+
+.text {
+    @apply text-2xl font-black tracking-widest;
+    text-shadow:
+        0 0 10px rgba(0, 0, 0, 1),
+        0 5px 5px rgba(0, 0, 0, 1);
+
+    &:global {
+        will-change: transform;
+        animation: fadeInUp 0.35s ease-in-out 0.1s both;
+    }
+}
+
+.score {
+    @apply relative my-3 bg-gradient-to-r from-primary
+    to-orange-400 bg-clip-text text-7xl font-black tracking-tighter text-transparent;
+
+    &:global {
+        will-change: transform;
+        animation: fadeInDown 0.35s ease-in-out 0.1s both;
+    }
+}
+
+.button {
+    @apply btn text-2xl font-bold tracking-tight;
+
+    &:global {
+        will-change: transform;
+        animation: fadeInUp 0.35s ease-in-out 0.3s both;
+    }
+}

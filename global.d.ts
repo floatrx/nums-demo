@@ -12,8 +12,3 @@ declare global {
 declare global {
   type FC<T = object> = FunctionComponent<PropsWithChildren<T>>;
 }
-
-declare module '*.module.css' {
-  const value: { [className: string]: string };
-  export default value;
-}
