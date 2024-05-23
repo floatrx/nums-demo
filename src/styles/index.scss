@@ -23,10 +23,11 @@
     }
 
     body {
-        @apply m-0 min-w-[320px] touch-none select-none bg-[#000];
-        background-image:
+        @apply m-0 min-w-[320px] touch-none select-none;
+        background:
             url("/looper.svg") center/200% no-repeat,
-            radial-gradient(circle at top center, rgba(102, 0, 255, 0.2) 0%, rgba(0, 0, 0, 100%) 100%) no-repeat fixed;
+            radial-gradient(circle at top center, rgba(102, 0, 255, 0.2) 0%, rgba(0, 0, 0, 100%) 100%) no-repeat fixed,
+            #000;
     }
 
     a {
@@ -36,20 +37,14 @@
 
 @layer components {
     .main {
-        @apply m-auto flex min-h-dvh flex-col items-center
-        justify-center
-        gap-1
-        space-y-2 px-4;
+        @apply m-auto flex min-h-dvh flex-col items-center;
+        @apply justify-center;
+        @apply gap-1;
+        @apply space-y-2 px-4;
     }
 
     .header {
-        @apply flex
-            min-h-[45px]
-        min-w-full
-        gap-2
-        py-2
-        font-bold
-        text-purple-500
-        md:text-2xl;
+        @apply flex min-h-[45px] min-w-full gap-2 py-2;
+        @apply font-bold text-purple-500 md:text-2xl;
     }
 }
