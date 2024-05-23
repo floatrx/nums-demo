@@ -1,11 +1,10 @@
-import { DEFAULT_BOARD_SIZE } from '@/config/const';
 import { useApp } from '@/hooks/use-app';
-
 import { Board } from '@/components/board/board';
 import { Footer } from '@/components/layout/footer/footer';
 import { Heading } from '@/components/layout/heading/heading';
 import { Score } from '@/components/layout/score/score';
 import { Winner } from '@/components/winner/winner';
+import { DEFAULT_BOARD_SIZE } from '@/config/const';
 
 export const App = () => {
   const { isWin, board, score, boosterK, shuffle, shuffleCount, resetGame, requestSolver, boardRef } = useApp();

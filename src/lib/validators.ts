@@ -6,10 +6,9 @@
  * 1. validateSelection
  * 2. validateSolution
  */
-import { SCORE_DEFAULT, SCORE_TEN } from '@/config/const';
 import { sortCells } from '@/lib/board';
-
-import { TBoard, type TBoardSize, TCellsQueue, type TCoordinates } from '@/types/game';
+import { SCORE_DEFAULT, SCORE_TEN } from '@/config/const';
+import type { TBoard, TBoardSize, TCellsQueue, TCoordinates } from '@/types/game';
 
 /**
  * Check if the selected cells are valid according to the game rules

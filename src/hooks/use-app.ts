@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-
-import { BOOSTER_MAX, BOOSTER_RESET_INTERVAL, DEFAULT_BOARD_SIZE, SHUFFLE_MAX, SHUFFLE_REFRESH_INTERVAL } from '@/config/const';
 import { useAnimation } from '@/hooks/use-animation';
 import { generateBoard } from '@/lib/board';
 import { playSound } from '@/lib/sounds';
 import { getRandomNumber } from '@/lib/utils';
-
+import { BOOSTER_MAX, BOOSTER_RESET_INTERVAL, DEFAULT_BOARD_SIZE, SHUFFLE_MAX, SHUFFLE_REFRESH_INTERVAL } from '@/config/const';
 import type { TBoard, TCell, TTimeout } from '@/types/game';
 
 /**

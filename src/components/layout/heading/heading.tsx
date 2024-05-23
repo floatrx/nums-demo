@@ -1,9 +1,6 @@
 import { Shuffle } from 'lucide-react';
-
 import { cn } from '@/lib/utils';
-
-import { TBoardSize } from '@/types/game';
-
+import type { TBoardSize } from '@/types/game';
 // Styles
 import s from './heading.module.css';
 

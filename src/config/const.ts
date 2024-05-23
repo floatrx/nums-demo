@@ -1,6 +1,5 @@
 import { calculateBoardSize } from '@/lib/board';
-
-import { TBoardSize } from '@/types/game';
+import type { TBoardSize } from '@/types/game';
 
 export const DEFAULT_BOARD_SIZE: TBoardSize = calculateBoardSize();
 

@@ -1,6 +1,5 @@
 import { getRandomNumber } from '@/lib/utils';
-
-import { TBoard, TBoardSize, TCell, TCellsQueue } from '@/types/game';
+import type { TBoard, TBoardSize, TCell, TCellsQueue } from '@/types/game';
 
 /**
  * Generate array of cells according to the size

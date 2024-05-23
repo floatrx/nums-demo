@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-
 import { playSound } from '@/lib/sounds';
 import { validateSelection, validateSolution } from '@/lib/validators';
-
 import type { TBoard, TBoardSize, TCellsQueue, TCoordinates } from '@/types/game';
 
 /**

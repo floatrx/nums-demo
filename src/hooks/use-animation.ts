@@ -1,5 +1,4 @@
 import { useCallback, useRef } from 'react';
-
 import { playSound } from '@/lib/sounds';
 
 export const useAnimation = () => {

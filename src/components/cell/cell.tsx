@@ -1,7 +1,5 @@
 import { cn } from '@/lib/utils';
-
 import type { TCoordinates } from '@/types/game';
-
 // Styles
 import s from './cell.module.css';
 

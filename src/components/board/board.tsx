@@ -1,13 +1,9 @@
 import { forwardRef } from 'react';
-
-import { DEFAULT_BOARD_SIZE } from '@/config/const';
 import { useBoard } from '@/hooks/use-board';
 import { cn } from '@/lib/utils';
-
 import { Cell } from '@/components/cell/cell';
-
+import { DEFAULT_BOARD_SIZE } from '@/config/const';
 import type { TBoard, TBoardSize } from '@/types/game';
-
 // Styles
 import s from './board.module.css';
 
