@@ -19,14 +19,14 @@ export const Heading: FC<IProps> = ({ size, onReset, canShuffle, onShuffle }) =>
       </small>
     </span>
     <div className={s.actions}>
-      <button className={s.button} onClick={onReset}>
-        <RotateCw className={s.icon} />
-      </button>
       {canShuffle && (
         <button className={s.button} onClick={onShuffle}>
           <Shuffle className={s.icon} />
         </button>
       )}
+      <button className={s.button} onClick={onReset}>
+        <RotateCw className={s.icon} />
+      </button>
     </div>
   </h2>
 );
