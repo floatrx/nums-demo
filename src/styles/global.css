@@ -41,9 +41,16 @@
     .text-primary-gradient {
         @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
     }
+
     .btn {
-        @apply bg-black/10 shadow-md backdrop-blur;
-        @apply self-center rounded-md border border-purple-400 px-2 text-sm;
-        @apply text-primary-gradient;
+        @apply text-primary-gradient
+        self-center
+        rounded-md
+        border
+        border-purple-400 bg-black/10
+        px-2
+        text-sm
+        shadow-md
+        backdrop-blur;
     }
 }

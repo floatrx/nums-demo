@@ -6,7 +6,7 @@
  * 1. validateSelection
  * 2. validateSolution
  */
-import { TBoard, TCellsQueue } from '@/types/game';
+import { TBoard, TCellsQueue, type TGridSize } from '@/types/game';
 import { SCORE_DEFAULT, SCORE_TEN } from '@/config/const';
 
 /**
@@ -14,39 +14,36 @@ import { SCORE_DEFAULT, SCORE_TEN } from '@/config/const';
  * @param coordinates
  * @param passed
  */
-export type ValidateSelection = (selectedCells: TCellsQueue, solvedCells: TCellsQueue) => boolean;
-export const validateSelection: ValidateSelection = (selectedCells, solvedCells) => {
+export type ValidateSelection = (selectedCells: TCellsQueue, solvedCells: TCellsQueue, boardSize: TGridSize) => boolean;
+export const validateSelection: ValidateSelection = (selectedCells, solvedCells, boardSize) => {
   if (selectedCells.length <= 1) return true; // not enough cells selected
 
   // Get the selected cells as primary and secondary
-  const [cell1, cell2] = selectedCells;
+  const [cell1, cell2] = selectedCells.sort(([r1], [r2]) => r1 - r2);
 
-  const [cx1, cy1] = cell1;
-  const [cx2, cy2] = cell2;
+  // Get primary (p) and secondary (s) cell coordinates
+  const [primaryX, primaryY] = cell1;
+  const [secondaryX, secondaryY] = cell2;
 
   /**
    * Check if the selected cells are in order
    * and there are no unsolved cells between them
    */
-  // Determine the boundaries of the area to be covered
-  const startX = Math.min(cx1, cx2);
-  const endX = Math.max(cx1, cx2);
-  const startY = Math.min(cy1, cy2);
-  const endY = Math.max(cy1, cy2);
   const linearPath: TCellsQueue = [];
-  for (let x = startX; x <= endX; x++) {
-    for (let y = startY; y <= endY; y++) {
-      if ((x === cx1 && y < cy1) || (x === cx2 && y > cy2)) continue;
-      if (solvedCells.map((e) => e.toString()).includes([x, y].toString())) continue;
-      linearPath.push([x, y]);
+  for (let row = primaryX; row <= secondaryX; row++) {
+    for (let col = 0; col <= boardSize.cols; col++) {
+      // Check 1st row and last row and skip the cells that are not in the path
+      if ((row === primaryX && col <= primaryY) || (row === secondaryX && col >= secondaryY)) continue;
+      // Skip the cells that are already solved
+      if (solvedCells.map((e) => e.toString()).includes([row, col].toString())) continue;
+      linearPath.push([row, col]);
     }
   }
-  /** When linearPath has only 2 elements,
-   * it means that the selected cells are in order
-   * NOTE: This logic is not tested yet.
+  /** When linearPath has only 1 element, it means that
+   * the selected cells (primary & secondary) are in order!
    */
-  if (linearPath.length === 2) {
-    console.log('cells are in order and there are no unsolved cells between them');
+  if (linearPath.length === 1) {
+    console.log('cells are in order');
     return true;
   }
 
@@ -57,35 +54,36 @@ export const validateSelection: ValidateSelection = (selectedCells, solvedCells)
    * or to the left or right of the primary cell...
    * Diagonal selections are not allowed!
    */
-  if (cx1 !== cx2 && cy1 !== cy2) {
+  if (primaryX !== secondaryX && primaryY !== secondaryY) {
     console.log('cells are not in the same row or column');
     return false; // cells are not in the same row or column
   }
 
   /**
    * Check if the path between the selected cells
+   * [left,right,top & bottom]
    */
   const path: [number, number][] = [];
-  if (cx1 === cx2) {
+  if (primaryX === secondaryX) {
     // Vertical path
-    const startY = Math.min(cy1, cy2);
-    const endY = Math.max(cy1, cy2);
+    const startY = Math.min(primaryY, secondaryY);
+    const endY = Math.max(primaryY, secondaryY);
     for (let y = startY; y <= endY; y++) {
-      path.push([cx1, y]);
+      path.push([primaryX, y]);
     }
   } else {
     // Horizontal path
-    const startX = Math.min(cx1, cx2);
-    const endX = Math.max(cx1, cx2);
+    const startX = Math.min(primaryX, secondaryX);
+    const endX = Math.max(primaryX, secondaryX);
     for (let x = startX; x <= endX; x++) {
-      path.push([x, cy1]);
+      path.push([x, primaryY]);
     }
   }
 
   // Validate that all cells in the path are either passed or one of the selected cells
   for (const [x, y] of path) {
-    const isSelectedCell = (x === cx1 && y === cy1) || (x === cx2 && y === cy2);
-    const isInPassed = solvedCells.some((p) => p[0] === x && p[1] === y);
+    const isSelectedCell = (x === primaryX && y === primaryY) || (x === secondaryX && y === secondaryY);
+    const isInPassed = solvedCells.some(([px, py]) => px === x && py === y);
 
     if (!isSelectedCell && !isInPassed) {
       console.log('cell not passed and not selected');

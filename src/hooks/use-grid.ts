@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { playSound } from '@/lib/sounds';
 import { validateSelection, validateSolution } from '@/lib/validators';
 
-import type { TBoard, TCellsQueue, TCoordinates } from '@/types/game';
+import type { TBoard, TCellsQueue, TCoordinates, TGridSize } from '@/types/game';
 
 /**
  * Hook to handle the grid logic
@@ -50,8 +50,13 @@ export const useGrid = ({ board, onSolve }: { board: TBoard; onSolve: (score: nu
   useEffect(() => {
     if (selectedCells.length !== 2) return;
 
+    const boardSize: TGridSize = {
+      rows: board.length,
+      cols: board[0].length,
+    };
+
     // Check if the selected cells are valid according to the game rules
-    if (!validateSelection(selectedCells, solvedCells)) {
+    if (!validateSelection(selectedCells, solvedCells, boardSize)) {
       playSound('error');
       clearSelection();
       return; // invalid selection
