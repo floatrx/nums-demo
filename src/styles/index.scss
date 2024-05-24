@@ -23,7 +23,7 @@
     }
 
     body {
-        @apply m-0 min-w-[320px] touch-none select-none;
+        @apply m-0 min-w-[320px] touch-pan-x touch-pan-y select-none;
         background:
             url("/looper.svg") center/200% no-repeat,
             radial-gradient(circle at top center, rgba(102, 0, 255, 0.2) 0%, rgba(0, 0, 0, 100%) 100%) no-repeat fixed,
