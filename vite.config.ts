@@ -11,7 +11,6 @@ export default defineConfig(({ mode }) => {
       react(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.svg', 'icon/favicon.png', 'icon/size-48.png', 'icon/size-192.png', 'icon/size-512.png'],
         manifest: {
           short_name: 'Nums',
           name: 'Nums Game',
