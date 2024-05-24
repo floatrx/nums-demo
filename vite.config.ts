@@ -18,11 +18,6 @@ export default defineConfig(({ mode }) => {
           icons: [
             {
               src: 'icon/favicon.png',
-              sizes: '16x16',
-              type: 'image/png',
-            },
-            {
-              src: 'icon/favicon.png',
               sizes: '32x32',
               type: 'image/png',
             },
@@ -50,7 +45,7 @@ export default defineConfig(({ mode }) => {
         workbox: {
           // Precaching
           globPatterns: ['**/*.{js,css,html,svg,mp3}'],
-          // Runtime Caching
+          // Runtime Caching (just example)
           runtimeCaching: [
             {
               urlPattern: /^https:\/\/api\.myapp\.com\/.*/,
