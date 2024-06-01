@@ -60,7 +60,7 @@ export const useApp = () => {
   // Increase the shuffle count after a certain interval
   useEffect(() => {
     const timerId = setInterval(() => {
-      if (shuffleCount >= 2) return;
+      if (shuffleCount >= SHUFFLE_MAX) return;
       setShuffleCount((prev) => Math.min(prev + 1, SHUFFLE_MAX));
     }, SHUFFLE_REFRESH_INTERVAL);
     return () => clearInterval(timerId);
