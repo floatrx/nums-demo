@@ -1,6 +1,7 @@
 # Nums game (React + Vite)
 
 ### Demo https://nums.floatrx.net/
+### WebView version https://github.com/floatrx/electron-webview
 
 ![Screenshot](public/nums.png)
 
